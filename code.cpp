@@ -9,8 +9,6 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define min3(a, b, c) min(a, min(b, c))
 #define max3(a, b, c) max(a, max(b, c))
-// #define FOR(i, n) for (ll i = 0; i < n; i++)
-// #define FORR(i, n) for (ll i = n - 1; i >= 0; i--)
 #define FOR(i,j,n) for(int i=j;i<n;i++)
 #define FORR(i,j,n) for(int i=j;i>n;i--)
 #define all(v) v.begin(), v.end()
@@ -30,16 +28,20 @@ typedef vector<string> vs;
 typedef unordered_map<int, int> mp;
 typedef unordered_map<ll, ll> mpl;
 
+#define lint(a) int a; cin>>a;
+#define lin(a) ll a; cin>>a;
+#define lin2(a,b) ll a,b; cin>>a>>b;
+#define lin3(a,b,c) ll a,b,c; cin>>a>>b>>c;
+#define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
+#define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
 
 void solve()
 {
-	int n, m;
-	cin >> n >> m;
+
+	lin(n);
 	
 	int a[n];
-	FOR(i,0,n){
-		cin>>a[i];
-	}
+	vin(a,n);
 
 }
 
@@ -51,7 +53,7 @@ int main()
 	freopen("output1.txt", "w", stdout);
 #endif
 
-	int t; cin >> t;
+	lint(t);
 
 	while (t--)
 	{

@@ -25,27 +25,30 @@ typedef unsigned long long int ull;
 typedef vector<ll> vll;
 typedef vector<int> vi;
 typedef vector<string> vs;
-typedef unordered_map<int, int> mp;
+typedef map<char, int> mp;
 typedef unordered_map<ll, ll> mpl;
 
+int freq[3000];
+string s;
 
 void solve()
 {
-	int x = 0;
-	string a="The streak lives still in our heart!";
-	string b="The streak is broken!";
-	string s;
-	cin >> s;
+	int maxFreq = 0, n;
+	char ch;
 
-	int i, p = 0;
-	while ((i = s.find("21", p)) != string::npos) {
-		cout<<b;
-		return;
+	getline(cin,s);
+	n = len(s);
+
+	FOR(i,0,n) {
+		freq[s[i]]++;
+		if (freq[s[i]] > maxFreq) {
+			maxFreq = freq[s[i]];
+			ch = s[i];
+		} else if (freq[s[i]] == maxFreq && ch > s[i]) {
+			ch = s[i];
+		}
 	}
-	if(stoi(s)%21==0)
-		cout<<b;
-	else
-		cout<<a;
+	cout << ch << " " << maxFreq;
 
 }
 
@@ -56,14 +59,14 @@ int main()
 	freopen("input1.txt", "r", stdin);
 	freopen("output1.txt", "w", stdout);
 #endif
-	// solve();
-	int t; cin >> t;
+	solve();
+	// int t; cin >> t;
 
-	while (t--)
-	{
-		solve();
-		cout << endl;
-	}
+	// while (t--)
+	// {
+	// 	solve();
+	// 	cout << endl;
+	// }
 
 	return 0;
 }
