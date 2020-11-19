@@ -11,6 +11,8 @@
 #define max3(a, b, c) max(a, max(b, c))
 #define FOR(i,j,n) for(int i=j;i<n;i++)
 #define FORR(i,j,n) for(int i=j;i>n;i--)
+// #define FOR(i,n) for(int i=0;i<n;i++)
+// #define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
 #define tez_chal_bsdk                          \
@@ -35,20 +37,18 @@ typedef unordered_map<ll, ll> mpl;
 #define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
 #define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
 
-
-mps mp;
 void solve()
 {
-	string s;
-	cin >> s;
-
-	mp[s]++;
-
-	if (mp[s] == 1)
-		cout << "OK";
-	else
-		cout << s + to_string(mp[s]-1);
-
+	cint(n);
+	ll sum = 0;
+	FOR(i,0,n) {
+		cint(x);
+		if (x < 0) {
+			x = sum / i;
+		}
+		sum += x;
+		cout << x << ' ';
+	}
 }
 
 int main()
@@ -75,3 +75,6 @@ int main()
 // ctrl + B          :  build
 // ctrl + X          :  cut the line
 // ctrl +
+/*
+
+*/

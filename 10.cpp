@@ -11,6 +11,8 @@
 #define max3(a, b, c) max(a, max(b, c))
 #define FOR(i,j,n) for(int i=j;i<n;i++)
 #define FORR(i,j,n) for(int i=j;i>n;i--)
+// #define FOR(i,n) for(int i=0;i<n;i++)
+// #define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
 #define tez_chal_bsdk                          \
@@ -35,20 +37,41 @@ typedef unordered_map<ll, ll> mpl;
 #define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
 #define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
 
+void solve1()
+{
+	cint(n);
+	int b[++n] = {0};
+	FOR(i, 1, n) {
+		cin(x);
+		b[i] = b[i - 1] + x;
+	}
+	cin(q);
+	while (q--)
+	{
+		cin2(p, q);
+		cout << b[q + 1] - b[p] << endl;
+	}
+}
 
-mps mp;
 void solve()
 {
-	string s;
-	cin >> s;
+	cint(n);
+	int a[n], b[n];
+	vin(a, n);
+	b[0] = a[0];
+	FOR(i, 1, n)
+	b[i] = b[i - 1] + a[i];
+	cin(q);
+	// vout(b, n)
+	while (q--)
+	{
+		cin2(p, q);
 
-	mp[s]++;
-
-	if (mp[s] == 1)
-		cout << "OK";
-	else
-		cout << s + to_string(mp[s]-1);
-
+		if (p == 0)
+		{cout << b[q] << endl;}
+		else
+			cout << b[q] - b[p - 1] << endl
+		}
 }
 
 int main()
@@ -59,13 +82,13 @@ int main()
 	freopen("output1.txt", "w", stdout);
 #endif
 
-	// solve();
-	cint(t);
-	while (t--)
-	{
-		solve();
-		cout << endl;
-	}
+	solve();
+	// cint(t);
+	// while (t--)
+	// {
+	// 	solve();
+	// 	cout << endl;
+	// }
 
 	return 0;
 }
@@ -75,3 +98,6 @@ int main()
 // ctrl + B          :  build
 // ctrl + X          :  cut the line
 // ctrl +
+/*
+
+*/

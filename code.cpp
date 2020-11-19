@@ -9,8 +9,10 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define min3(a, b, c) min(a, min(b, c))
 #define max3(a, b, c) max(a, max(b, c))
-#define FOR(i,j,n) for(int i=j;i<n;i++)
-#define FORR(i,j,n) for(int i=j;i>n;i--)
+// #define FOR(i,j,n) for(int i=j;i<n;i++)
+// #define FORR(i,j,n) for(int i=j;i>n;i--)
+#define FOR(i,n) for(int i=0;i<n;i++)
+#define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
 #define tez_chal_bsdk                          \
@@ -28,20 +30,19 @@ typedef vector<string> vs;
 typedef unordered_map<int, int> mp;
 typedef unordered_map<ll, ll> mpl;
 
-#define lint(a) int a; cin>>a;
-#define lin(a) ll a; cin>>a;
-#define lin2(a,b) ll a,b; cin>>a>>b;
-#define lin3(a,b,c) ll a,b,c; cin>>a>>b>>c;
+#define cint(a) int a; cin>>a;
+#define cin(a) ll a; cin>>a;
+#define cin2(a,b) ll a,b; cin>>a>>b;
+#define cin3(a,b,c) ll a,b,c; cin>>a>>b>>c;
 #define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
 #define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
 
 void solve()
 {
 
-	lin(n);
-	
-	int a[n];
-	vin(a,n);
+	cin(n);
+	// int a[n];
+	// vin(a, n);
 
 }
 
@@ -53,8 +54,8 @@ int main()
 	freopen("output1.txt", "w", stdout);
 #endif
 
-	lint(t);
-
+	// solve();
+	cint(t);
 	while (t--)
 	{
 		solve();

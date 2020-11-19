@@ -25,29 +25,46 @@ typedef unsigned long long int ull;
 typedef vector<ll> vll;
 typedef vector<int> vi;
 typedef vector<string> vs;
-typedef unordered_map<string, int> mps;
+typedef unordered_map<int, int> mp;
 typedef unordered_map<ll, ll> mpl;
 
-#define cint(a) int a; cin>>a;
-#define cin(a) ll a; cin>>a;
-#define cin2(a,b) ll a,b; cin>>a>>b;
-#define cin3(a,b,c) ll a,b,c; cin>>a>>b>>c;
-#define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
-#define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
+#define llin(a) ll a; cin>>a;
+#define llin2(a,b) ll a,b; cin>>a>>b;
+#define llin3(a,b,c) ll a,b,c; cin>>a>>b>>c;
+#define vecin(n, v) for(ll i=0; i<n;i++) cin>>v[i];
 
-
-mps mp;
+bool sq[2001];
 void solve()
 {
-	string s;
-	cin >> s;
+	llin(n);
+	vll v;
 
-	mp[s]++;
+	mpl ump;
+	FOR(i, 0, n)
+	{
+		llin(a);
+		ump[a]++;
+	}
 
-	if (mp[s] == 1)
-		cout << "OK";
-	else
-		cout << s + to_string(mp[s]-1);
+	for (auto i : ump)
+		v.pb(i.fr);
+
+	n = v.size();
+	ll c = 0;
+
+	FOR(i, 0, n)
+	{
+		ll f = ump[v[i]];
+		if (f > 1 && sq[2 * v[i]])
+			c += (f * (f - 1)) / 2;
+		for (ll j = i + 1; j < n; j++)
+		{
+			if (sq[v[i] + v[j]])
+				c += (f * ump[v[j]]);
+		}
+	}
+
+	cout << c;
 
 }
 
@@ -59,8 +76,16 @@ int main()
 	freopen("output1.txt", "w", stdout);
 #endif
 
-	// solve();
-	cint(t);
+	memset(sq, false, sizeof(sq));
+	FOR(i, 1, sqrt(2001))
+	{
+		if (i * i <= 2001)
+			sq[i * i] = true;
+		if (i * i * i <= 2001)
+			sq[i * i * i] = true;
+	}
+
+	llin(t);
 	while (t--)
 	{
 		solve();
