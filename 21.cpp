@@ -3,16 +3,18 @@
 #define pb push_back
 #define fr first
 #define sc second
-#define MOD 1000000007
+#define MOD 1e9 + 7
 #define len(x) x.size()
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define min3(a, b, c) min(a, min(b, c))
 #define max3(a, b, c) max(a, max(b, c))
-// #define FOR(i,j,n) for(int i=j;i<n;i++)
-// #define FORR(i,j,n) for(int i=j;i>n;i--)
-#define FOR(i,n) for(int i=0;i<n;i++)
-#define FORR(i,n) for(int i=j;i>=0;i--)
+
+#define FOR(i,j,n) for(int i=j;i<n;i++)
+#define FORR(i,j,n) for(int i=j;i>n;i--)
+
+// #define FOR(i,n) for(int i=0;i<n;i++)
+// #define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
 #define tez_chal_bsdk                          \
@@ -39,10 +41,21 @@ typedef unordered_map<ll, ll> mpl;
 
 void solve()
 {
+	cin2(n,k);
+	int a[n];
+	vin(a,n);
 
-	cin(n);
-	// int a[n];
-	// vin(a, n);
+	int maxsum=0;
+
+	FOR(i,0,k)maxsum+=a[i];
+	int winsum=maxsum;
+	FOR(i,k,n+k){
+		winsum=winsum+a[i%n]-a[(i-k)%n];
+		if(winsum>maxsum){
+			maxsum=winsum;
+		}
+	}
+	cout<<maxsum;
 
 }
 
