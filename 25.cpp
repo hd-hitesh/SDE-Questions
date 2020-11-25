@@ -15,7 +15,6 @@
 #define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
-#define test(n) cout<<"___"<<n<<"___\n";
 #define tez_chal_bsdk                          \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
@@ -38,15 +37,41 @@ typedef unordered_map<ll, ll> mpl;
 #define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
 #define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
 
-void solve()
+int n, c;
+int func(int num, int array[])
 {
-
-	cin(n);
-	// int a[n];
-	// vin(a, n);
-
+	int cows = 1, pos = array[0];
+	FOR(i, n)
+	{
+		if (array[i] - pos >= num)
+		{
+			pos = array[i];
+			cows++;
+			if (cows == c)
+				return 1;
+		}
+	}
+	return 0;
 }
-
+int bs(int array[])
+{
+	int ini = 0, last = array[n - 1], max = -1;
+	while (last > ini)
+	{
+		//cout<<last<<" "<<ini<<endl;
+		int mid = (ini + last) / 2;
+		if (func(mid, array) == 1)
+		{
+			//cout<<mid<<endl;
+			if (mid > max)
+				max = mid;
+			ini = mid + 1;
+		}
+		else
+			last = mid;
+	}
+	return max;
+}
 int main()
 {
 	tez_chal_bsdk;
@@ -54,15 +79,16 @@ int main()
 	freopen("input1.txt", "r", stdin);
 	freopen("output1.txt", "w", stdout);
 #endif
-
-	// solve();
-	cint(t);
+	cin(t);
 	while (t--)
 	{
-		solve();
-		cout << endl;
+		cin >> n >> c;
+		int array[n];
+		for (int i = 0; i < n; i++)
+			cin >> array[i];
+		sort(array, array + n);
+		cout << bs(array) << endl;
 	}
-
 	return 0;
 }
 

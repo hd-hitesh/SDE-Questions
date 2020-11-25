@@ -15,7 +15,6 @@
 #define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
-#define test(n) cout<<"___"<<n<<"___\n";
 #define tez_chal_bsdk                          \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
@@ -41,10 +40,17 @@ typedef unordered_map<ll, ll> mpl;
 void solve()
 {
 
-	cin(n);
-	// int a[n];
-	// vin(a, n);
-
+	cin(n); vi v; ll sum[n + 2];
+	FOR(i, n) {	cin(x); v.pb(x); } sort(all(v)); sum[0] = v[0];
+	for (int i = 1; i < n; ++i)
+		sum[i] = sum[i - 1] + v[i];
+	cin(q); while (q--) {
+		cin(m);
+		int ind = upper_bound(all(v), m) - v.begin();
+		if (m >= v[n - 1])cout << n << " " << sum[n - 1] << endl
+		else
+		cout << ind << " " << sum[ind-1] << endl;
+	}
 }
 
 int main()
@@ -55,13 +61,13 @@ int main()
 	freopen("output1.txt", "w", stdout);
 #endif
 
-	// solve();
-	cint(t);
-	while (t--)
-	{
-		solve();
-		cout << endl;
-	}
+	solve();
+	// cint(t);
+	// while (t--)
+	// {
+	// 	solve();
+	// 	cout << endl;
+	// }
 
 	return 0;
 }

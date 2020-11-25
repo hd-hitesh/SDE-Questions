@@ -9,10 +9,10 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define min3(a, b, c) min(a, min(b, c))
 #define max3(a, b, c) max(a, max(b, c))
-// #define FOR(i,j,n) for(int i=j;i<n;i++)
-// #define FORR(i,j,n) for(int i=j;i>n;i--)
-#define FOR(i,n) for(int i=0;i<n;i++)
-#define FORR(i,n) for(int i=j;i>=0;i--)
+#define FOR(i,j,n) for(int i=j;i<n;i++)
+#define FORR(i,j,n) for(int i=j;i>n;i--)
+// #define FOR(i,n) for(int i=0;i<n;i++)
+// #define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
 #define test(n) cout<<"___"<<n<<"___\n";
@@ -38,32 +38,42 @@ typedef unordered_map<ll, ll> mpl;
 #define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
 #define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
 
-void solve()
+void SieveOfEratosthenes()
 {
+    ull n = 100000000;;vll pr;
+    bool prime[n + 1];
+    memset(prime, true, sizeof(prime));
 
-	cin(n);
-	// int a[n];
-	// vin(a, n);
+    for (ull p = 2; p * p <= n; p++)
+    {
+        if (prime[p] == true)
+        {
+            for (int i = p * p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
 
+    // Print all prime numbers
+    for (ull p = 2; p <= n; p++)
+        if (prime[p])
+        {
+            pr.push_back(p);
+            // cout << p << " ";
+        }
+        ull q=0;
+        n=pr.size();test(n);
+    while(q<=n){
+        cout<<pr[q]<<endl;
+        q=q+100;
+    }
 }
 
 int main()
 {
-	tez_chal_bsdk;
-#ifndef ONLINE_JUDGE
-	freopen("input1.txt", "r", stdin);
-	freopen("output1.txt", "w", stdout);
-#endif
 
-	// solve();
-	cint(t);
-	while (t--)
-	{
-		solve();
-		cout << endl;
-	}
+    SieveOfEratosthenes();
 
-	return 0;
+    return 0;
 }
 
 // ctrl +  alt + F   :  format the code

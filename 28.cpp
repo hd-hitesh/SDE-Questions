@@ -9,10 +9,10 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define min3(a, b, c) min(a, min(b, c))
 #define max3(a, b, c) max(a, max(b, c))
-// #define FOR(i,j,n) for(int i=j;i<n;i++)
-// #define FORR(i,j,n) for(int i=j;i>n;i--)
-#define FOR(i,n) for(int i=0;i<n;i++)
-#define FORR(i,n) for(int i=j;i>=0;i--)
+#define FOR(i,j,n) for(int i=j;i<n;i++)
+#define FORR(i,j,n) for(int i=j;i>n;i--)
+// #define FOR(i,n) for(int i=0;i<n;i++)
+// #define FORR(i,n) for(int i=j;i>=0;i--)
 #define all(v) v.begin(), v.end()
 #define endl "\n";
 #define test(n) cout<<"___"<<n<<"___\n";
@@ -41,9 +41,12 @@ typedef unordered_map<ll, ll> mpl;
 void solve()
 {
 
-	cin(n);
-	// int a[n];
-	// vin(a, n);
+	cin(n,k);
+	int a[n];
+	vin(a, n);
+	sort(a,a+n);
+	FOR(i,k,n)
+
 
 }
 
@@ -55,13 +58,13 @@ int main()
 	freopen("output1.txt", "w", stdout);
 #endif
 
-	// solve();
-	cint(t);
-	while (t--)
-	{
-		solve();
-		cout << endl;
-	}
+	solve();
+	// cint(t);
+	// while (t--)
+	// {
+	// 	solve();
+	// 	cout << endl;
+	// }
 
 	return 0;
 }

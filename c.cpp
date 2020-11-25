@@ -41,9 +41,22 @@ typedef unordered_map<ll, ll> mpl;
 void solve()
 {
 
-	cin(n);
-	// int a[n];
-	// vin(a, n);
+	cin(n); ll v[n];
+	vin(v, n); mpl m;
+	bool flag = true;
+	FOR(i, n) {m[v[i]]++;}
+	FOR(i, n - 1) {	if (v[i] != v[i + 1]) {	flag = false; break;}}
+	if (flag) {cout << 0; return;}
+	if ( (v[0] == v[n - 1] && m[v[n - 1]] == 2) || m.size() == n) {cout << 1 << " " << m[v[0]]; return;}
+	if ( (v[0] == v[n - 1])){m[v[0]]-=2;}
+	ll min_f = m[v[0]];
+	for (auto i : m)
+	{	int p=0;
+		while(i.fr==v[p++])m[i.fr]--;p=0;
+		while(i.fr==v[n-1-p++])m[i.fr]--;	
+		if (i.sc < min_f)min_f = i.sc;
+	}
+	cout << min_f + 1;
 
 }
 
@@ -71,3 +84,18 @@ int main()
 // ctrl + B          :  build
 // ctrl + X          :  cut the line
 // ctrl +
+
+/*
+5
+3
+1 1 1
+5
+1 2 3 4 5
+5
+1 2 3 2 1
+7
+1 2 3 1 2 3 1
+11
+2 2 1 2 3 2 1 2 3 1 2
+
+*/
