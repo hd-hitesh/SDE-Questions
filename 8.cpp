@@ -34,6 +34,7 @@ typedef unordered_map<ll, ll> mpl;
 #define vecin(n, v) for(ll i=0; i<n;i++) cin>>v[i];
 
 bool sq[2001];
+
 void solve()
 {
 	llin(n);
@@ -49,14 +50,16 @@ void solve()
 	for (auto i : ump)
 		v.pb(i.fr);
 
-	n = v.size();
+	n = v.size();  
 	ll c = 0;
 
 	FOR(i, 0, n)
 	{
 		ll f = ump[v[i]];
-		if (f > 1 && sq[2 * v[i]])
+
+		if (f > 1 && sq[2 * v[i]])       
 			c += (f * (f - 1)) / 2;
+
 		for (ll j = i + 1; j < n; j++)
 		{
 			if (sq[v[i] + v[j]])
@@ -77,6 +80,7 @@ int main()
 #endif
 
 	memset(sq, false, sizeof(sq));
+
 	FOR(i, 1, sqrt(2001))
 	{
 		if (i * i <= 2001)

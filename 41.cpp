@@ -38,66 +38,23 @@ typedef unordered_map<ll, ll> mpl;
 #define vin(v,n) for(ll i=0; i<n;i++) cin>>v[i];
 #define vout(v,n) for(ll i=0; i<n;i++) cout<<v[i]<<" "; cout<<endl;
 
-#define MAXN   100001
-
-// stores smallest prime factor for every number
-int spf[MAXN];
-
-// Calculating SPF (Smallest Prime Factor) for every
-// number till MAXN.
-// Time Complexity : O(nloglogn)
-void sieve()
+void solve()
 {
-	spf[1] = 1;
-	for (int i = 2; i < MAXN; i++)
-
-		// marking smallest prime factor for every
-		// number to be itself.
-		spf[i] = i;
-
-	// separately marking spf for every even
-	// number as 2
-	for (int i = 4; i < MAXN; i += 2)
-		spf[i] = 2;
-
-	for (int i = 3; i * i < MAXN; i++)
-	{
-		// checking if i is prime
-		if (spf[i] == i)
-		{
-			// marking SPF for all numbers divisible by i
-			for (int j = i * i; j < MAXN; j += i)
-
-				// marking spf[j] if it is not
-				// previously marked
-				if (spf[j] == j)
-					spf[j] = i;
-		}
+	cint(n); cint(k);
+	int a[n], b[n];
+	vin(a, n); vin(b, n);
+	sort(a, a + n);
+	sort(b, b + n);
+	FOR(i, k) {
+		if (a[i] < b[n - i - 1]){
+			int t = a[i]; a[i] = b[n - i - 1]; b[n - i - 1] = t;}
+		else
+			break;
 	}
-}
+	ll sum = 0;
+	FOR(i, n)sum += a[i];
+	cout << sum;
 
-// A O(log n) function returning primefactorization
-// by dividing by smallest prime factor at every step
-vector<int> getFactorizationV(int x)
-{
-	vector<int> ret;
-	while (x != 1)
-	{
-		ret.push_back(spf[x]);
-		x = x / spf[x];
-	}
-	return ret;
-}
-
-set<int> getFactorization(int x)
-{
-	set<int> m;
-	while (x != 1)
-	{
-		m.insert(spf[x]);
-		x = x / spf[x];
-	}
-	return m;
 }
 
 int main()
@@ -107,19 +64,13 @@ int main()
 	freopen("input1.txt", "r", stdin);
 	freopen("output1.txt", "w", stdout);
 #endif
-	sieve();
-	cint(p);
-	// solve(p);
+
+	// solve();
 	cint(t);
 	while (t--)
 	{
-		cin(x);
-		// vector <int> p = getFactorizationV(x);
-		set<int> m = getFactorization(x);
-		int n = m.size();
-		// cout<<n;
-		if (n > 1)cout << "YES\n";
-		else cout << "NO\n";
+		solve();
+		cout << endl;
 	}
 
 	return 0;
